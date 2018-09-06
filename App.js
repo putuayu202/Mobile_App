@@ -1,28 +1,47 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import Judul from './Component/Judul';
 
 export default class App extends React.Component {
-  render() {
+   state = {
+    number: 0
+  }
+  Click(Yourname){
+    this.setState({
+      number: this.state.number - 1
+    })
+  }
+
+  handleClick(Myname){
+    this.setState({
+      number: this.state.number + 1
+    })
+  }
+  
+  render(){
+    const Myname = "DwikyDanov Iswardanu";
+    const Yourname ="UUD"
     return (
-      <View style={styles.container}>
-        <Text>DwikyDanov Iswardanu!</Text>
-        <Text>XI RPL 3</Text>
-        <Text>Absen 16</Text>
-         <Image 
-       style={{width: 100, height: 100}}
-       resizeMode="contain"
-       source={{ uri: 'https://lh3.googleusercontent.com/a_bWBGAdpuqz_FrquOE5G-5c6wta0extumhooLdq0hU_ZIA-7xiIznvmPhMAsEeTOMfSRw=s132' }}
-    />
+      <View >
+         <Judul title= "BIODATA"/>
+         <Judul title= "LOGiN"/>
+         <Judul title= "NAMBAH"/>
+         <Text>DwikyDanov Iswardanu!</Text>
+          <Text>XI RPL 3</Text>
+          <Text>Absen</Text>
+           <TouchableOpacity onPress={()=> this.Click(Yourname)}>
+           <Text>-</Text>
+           </TouchableOpacity>
+           <Text>{this.state.number}</Text>
+           <TouchableOpacity onPress={()=> this.handleClick(Myname)}>
+           <Text>+</Text>
+           </TouchableOpacity>
+
+          <Image source={require( './Gampang.jpg')}/>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+
